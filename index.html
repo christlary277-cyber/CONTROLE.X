@@ -6,44 +6,113 @@
   <title>CONTROLE.X</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0b0b0f;
+      background: #08090d;
       color: white;
-      text-align: center;
     }
 
     header {
-      padding: 25px;
-      background: #15151c;
+      padding: 22px;
+      background: #11131a;
+      border-bottom: 1px solid #292c36;
+      text-align: center;
     }
 
-    h1 {
+    header h1 {
       margin: 0;
+      font-size: 28px;
+      letter-spacing: 2px;
     }
 
-    .container {
-      padding: 50px 20px;
+    .content {
+      padding: 25px 18px 100px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .welcome {
+      padding: 25px;
+      background: #151821;
+      border-radius: 18px;
+      margin-bottom: 20px;
+    }
+
+    .welcome h2 {
+      margin-top: 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
     .card {
-      max-width: 450px;
-      margin: auto;
-      padding: 30px;
-      background: #171720;
-      border-radius: 20px;
+      padding: 22px 15px;
+      background: #151821;
+      border: 1px solid #292c36;
+      border-radius: 16px;
+      text-align: center;
     }
 
-    button {
-      margin-top: 20px;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 10px;
+    .icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin: 8px 0;
+      font-size: 17px;
+    }
+
+    .card p {
+      margin: 0;
+      color: #a9adb8;
+      font-size: 13px;
+    }
+
+    .start {
+      width: 100%;
+      margin-top: 22px;
+      padding: 16px;
+      border: 0;
+      border-radius: 12px;
       background: white;
       color: black;
       font-size: 16px;
       font-weight: bold;
+    }
+
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      background: #11131a;
+      border-top: 1px solid #292c36;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    nav button {
+      background: none;
+      border: 0;
+      color: #b8bbc5;
+      font-size: 12px;
+    }
+
+    nav span {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
     }
   </style>
 </head>
@@ -54,18 +123,79 @@
     <h1>CONTROLE.X</h1>
   </header>
 
-  <div class="container">
-    <div class="card">
-      <h2>Bienvenue</h2>
-      <p>Interface CONTROLE.X</p>
+  <main class="content">
 
-      <button onclick="commencer()">COMMENCER</button>
-    </div>
-  </div>
+    <section class="welcome">
+      <h2>Bienvenue 👋</h2>
+      <p>Bienvenue dans ton espace CONTROLE.X.</p>
+
+      <button class="start" onclick="demarrer()">
+        COMMENCER
+      </button>
+    </section>
+
+    <section class="cards">
+
+      <div class="card">
+        <div class="icon">📱</div>
+        <h3>Appareils</h3>
+        <p>Gérer tes appareils</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>Tableau de bord</h3>
+        <p>Voir les informations</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">⚙️</div>
+        <h3>Paramètres</h3>
+        <p>Configurer l'application</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">ℹ️</div>
+        <h3>À propos</h3>
+        <p>Informations sur CONTROLE.X</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <nav>
+    <button onclick="accueil()">
+      <span>🏠</span>
+      Accueil
+    </button>
+
+    <button onclick="appareils()">
+      <span>📱</span>
+      Appareils
+    </button>
+
+    <button onclick="parametres()">
+      <span>⚙️</span>
+      Paramètres
+    </button>
+  </nav>
 
   <script>
-    function commencer() {
-      alert("Bienvenue dans CONTROLE.X !");
+    function demarrer() {
+      alert("CONTROLE.X est prêt !");
+    }
+
+    function accueil() {
+      alert("Accueil");
+    }
+
+    function appareils() {
+      alert("Aucun appareil connecté pour le moment.");
+    }
+
+    function parametres() {
+      alert("Paramètres de CONTROLE.X");
     }
   </script>
 
