@@ -171,7 +171,15 @@
   }
 
   function addDevice() {
-    const name = prompt("Nom de ton appareil :");
+  const name = prompt("Entre le nom de ton appareil :");
+
+  if (name && name.trim() !== "") {
+    localStorage.setItem("controleX_device", name.trim());
+
+    document.getElementById("deviceStatus").textContent =
+      "● " + name.trim() + " — Appareil ajouté";
+  }
+}
 
     if (name) {
       document.getElementById("message").innerHTML = `
