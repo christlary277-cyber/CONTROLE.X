@@ -116,9 +116,9 @@
         📊 Tableau de bord
       </button>
 
-      <button onclick="action('Appareils sélectionnés')">
-        📱 Mes appareils
-      </button>
+      <button onclick="showDevices()">
+  📱 Mes appareils
+</button>
 
       <button onclick="action('Paramètres ouverts')">
         ⚙️ Paramètres
@@ -135,9 +135,62 @@
 
   <script>
     function action(message) {
+  document.getElementById("message").textContent = message;
+
+  if (message === "Appareils sélectionnés") {
+    document.getElementById("devices").style.display = "block";
+  }
+}
       document.getElementById("message").textContent = message;
     }
   </script>
+<script>
+  function showDevices() {
+    document.getElementById("message").innerHTML = `
+      <div style="
+        margin-top:20px;
+        padding:20px;
+        background:#121a23;
+        border:1px solid #263241;
+        border-radius:15px;
+        text-align:left;
+      ">
+        <h2>📱 Mes appareils</h2>
+        <p style="margin-top:12px;color:#35e38a;">
+          ● Aucun appareil connecté
+        </p>
 
+        <button
+          onclick="addDevice()"
+          style="margin-top:15px;"
+        >
+          ➕ Ajouter un appareil
+        </button>
+      </div>
+    `;
+  }
+
+  function addDevice() {
+    const name = prompt("Nom de ton appareil :");
+
+    if (name) {
+      document.getElementById("message").innerHTML = `
+        <div style="
+          margin-top:20px;
+          padding:20px;
+          background:#121a23;
+          border:1px solid #263241;
+          border-radius:15px;
+          text-align:left;
+        ">
+          <h2>📱 ${name}</h2>
+          <p style="margin-top:10px;color:#35e38a;">
+            ● Appareil ajouté
+          </p>
+        </div>
+      `;
+    }
+  }
+</script>
 </body>
 </html>
