@@ -8,111 +8,91 @@
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #08090d;
+      background: #0b0f14;
       color: white;
+      min-height: 100vh;
     }
 
     header {
-      padding: 22px;
-      background: #11131a;
-      border-bottom: 1px solid #292c36;
+      padding: 20px;
       text-align: center;
+      background: #111821;
+      border-bottom: 1px solid #263241;
     }
 
     header h1 {
-      margin: 0;
       font-size: 28px;
       letter-spacing: 2px;
     }
 
-    .content {
-      padding: 25px 18px 100px;
+    header p {
+      color: #8d99a8;
+      margin-top: 6px;
+    }
+
+    .container {
+      padding: 25px 18px;
       max-width: 600px;
       margin: auto;
     }
 
-    .welcome {
-      padding: 25px;
-      background: #151821;
-      border-radius: 18px;
+    .status {
+      background: #121a23;
+      border: 1px solid #263241;
+      border-radius: 15px;
+      padding: 20px;
       margin-bottom: 20px;
     }
 
-    .welcome h2 {
-      margin-top: 0;
+    .status-title {
+      color: #8d99a8;
+      font-size: 14px;
+      margin-bottom: 8px;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .card {
-      padding: 22px 15px;
-      background: #151821;
-      border: 1px solid #292c36;
-      border-radius: 16px;
-      text-align: center;
-    }
-
-    .icon {
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
-
-    .card h3 {
-      margin: 8px 0;
-      font-size: 17px;
-    }
-
-    .card p {
-      margin: 0;
-      color: #a9adb8;
-      font-size: 13px;
-    }
-
-    .start {
-      width: 100%;
-      margin-top: 22px;
-      padding: 16px;
-      border: 0;
-      border-radius: 12px;
-      background: white;
-      color: black;
-      font-size: 16px;
+    .online {
+      color: #35e38a;
+      font-size: 20px;
       font-weight: bold;
     }
 
-    nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 70px;
-      background: #11131a;
-      border-top: 1px solid #292c36;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
+    .buttons {
+      display: grid;
+      gap: 14px;
     }
 
-    nav button {
-      background: none;
-      border: 0;
-      color: #b8bbc5;
-      font-size: 12px;
+    button {
+      width: 100%;
+      padding: 18px;
+      border: none;
+      border-radius: 13px;
+      background: #182331;
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+      border: 1px solid #2a394b;
     }
 
-    nav span {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 4px;
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .danger {
+      background: #35191d;
+      border-color: #6b292f;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 20px;
+      color: #8d99a8;
+      min-height: 25px;
     }
   </style>
 </head>
@@ -121,81 +101,41 @@
 
   <header>
     <h1>CONTROLE.X</h1>
+    <p>Centre de contrôle</p>
   </header>
 
-  <main class="content">
+  <main class="container">
 
-    <section class="welcome">
-      <h2>Bienvenue 👋</h2>
-      <p>Bienvenue dans ton espace CONTROLE.X.</p>
+    <div class="status">
+      <div class="status-title">ÉTAT DU SYSTÈME</div>
+      <div class="online">● EN LIGNE</div>
+    </div>
 
-      <button class="start" onclick="demarrer()">
-        COMMENCER
+    <div class="buttons">
+      <button onclick="action('Tableau de bord ouvert')">
+        📊 Tableau de bord
       </button>
-    </section>
 
-    <section class="cards">
+      <button onclick="action('Appareils sélectionnés')">
+        📱 Mes appareils
+      </button>
 
-      <div class="card">
-        <div class="icon">📱</div>
-        <h3>Appareils</h3>
-        <p>Gérer tes appareils</p>
-      </div>
+      <button onclick="action('Paramètres ouverts')">
+        ⚙️ Paramètres
+      </button>
 
-      <div class="card">
-        <div class="icon">📊</div>
-        <h3>Tableau de bord</h3>
-        <p>Voir les informations</p>
-      </div>
+      <button class="danger" onclick="action('Fonction de sécurité activée')">
+        🛡️ Sécurité
+      </button>
+    </div>
 
-      <div class="card">
-        <div class="icon">⚙️</div>
-        <h3>Paramètres</h3>
-        <p>Configurer l'application</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">ℹ️</div>
-        <h3>À propos</h3>
-        <p>Informations sur CONTROLE.X</p>
-      </div>
-
-    </section>
+    <div id="message"></div>
 
   </main>
 
-  <nav>
-    <button onclick="accueil()">
-      <span>🏠</span>
-      Accueil
-    </button>
-
-    <button onclick="appareils()">
-      <span>📱</span>
-      Appareils
-    </button>
-
-    <button onclick="parametres()">
-      <span>⚙️</span>
-      Paramètres
-    </button>
-  </nav>
-
   <script>
-    function demarrer() {
-      alert("CONTROLE.X est prêt !");
-    }
-
-    function accueil() {
-      alert("Accueil");
-    }
-
-    function appareils() {
-      alert("Aucun appareil connecté pour le moment.");
-    }
-
-    function parametres() {
-      alert("Paramètres de CONTROLE.X");
+    function action(message) {
+      document.getElementById("message").textContent = message;
     }
   </script>
 
